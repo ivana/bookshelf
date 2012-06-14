@@ -1,0 +1,12 @@
+defaults: &defaults
+  google:
+    api_key: <%= ENV['GOOGLE_API_KEY'] %>
+
+development:
+  <<: *defaults
+
+test: &testing
+  <<: *defaults
+
+production:
+  <<: *defaults
