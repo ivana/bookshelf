@@ -17,9 +17,10 @@ $text-color: #333;
 }
 
 body {
-  width:$site-width; margin:0 auto;
+  width: $site-width;
+  margin:0 auto;
   font:12px/1.5 "helvetica neue", helvetica, arial, sans-serif;
-  color:$text-color;
+  color: $text-color;
 /*  background:$background-color;*/
   background:url('/assets/754.png') repeat-y center;
 }
@@ -27,4 +28,24 @@ body {
 /* lists */
 .no-style-type {
   list-style-type:none;
+}
+
+/* images */
+$cover-w: 2 * $column-width + $gap-width;
+$cover-h: $cover-w * 3/2;
+$cover-small-w: $column-width;
+$cover-small-h: $cover-small-w * 3/2;
+
+.book img, .no-img {
+  width: $cover-w;
+  border:1px solid #ccc;
+
+  aside & { width: $cover-small-w; }
+}
+.no-img {
+  height: $cover-h; line-height: $cover-h;
+  background:#eee; color:#aaa;
+  text-align:center; font-size:11px; font-style:italic;
+
+  aside & { height: $cover-small-h; line-height: $cover-small-h; }
 }
