@@ -18,7 +18,7 @@
 
   <form>
     <p>
-      <input type="search" id="search" name="search" placeholder="Title / Author / ISBN">
+      <input type="search" id="search" name="search" placeholder="title, author, ISBN (anything goes)">
       <!--<label for="search">Search</label>-->
       <input type="submit" value="Search">
     </p>
@@ -28,6 +28,7 @@
     <h1>Books I read</h1>
 
     <article class="book">
+      <%= image_tag "slut_thumb.jpg" %>
       <header>
         <hgroup>
           <h1>The 4-Hour Work Week</h1>
@@ -76,6 +77,7 @@
       <h1>Currently reading</h1>
 
       <article class="book">
+        <%= image_tag "slut_thumb_small.jpg" %>
         <header>
           <hgroup>
             <h1>Getting Real</h1>

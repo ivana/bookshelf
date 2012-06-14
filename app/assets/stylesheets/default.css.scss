@@ -1,6 +1,6 @@
 /* grid */
-$column-width: 40px;
-$gap-width: 20px;
+$column-width: 50px;
+$gap-width: 14px;
 
 $site-width: $column-width * 12 + $gap-width * 11;
 $wide-wing-width: $column-width * 8 + $gap-width * 7;
@@ -8,7 +8,7 @@ $narrow-wing-width: $column-width * 4 + $gap-width * 3;
 
 /* colours */
 $background-color: snow;
-$text-color: #444;
+$text-color: #333;
 
 /* reset */
 * {
@@ -19,6 +19,9 @@ $text-color: #444;
 body {
   width:$site-width; margin:0 auto;
   font:12px/1.5 "helvetica neue", helvetica, arial, sans-serif;
+  color:$text-color;
+/*  background:$background-color;*/
+  background:url('/assets/754.png') repeat-y center;
 }
 
 /* lists */
