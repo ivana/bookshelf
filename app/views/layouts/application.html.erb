@@ -7,24 +7,26 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <h1>Bookshelf</h1>
+  <header>
+    <h1>Bookshelf</h1>
 
-  <nav>
-    <ol class="no-style-type">
-      <li><a href="">Ivana</a></li>
-      <li><a href="">Logout</a></li>
-    </ol>
-  </nav>
+    <nav>
+      <ol class="no-style-type">
+        <li><a href="">Ivana</a></li>
+        <li><a href="">Logout</a></li>
+      </ol>
+    </nav>
 
-  <form>
-    <p>
-      <input type="search" id="search" name="search" placeholder="title, author, ISBN (anything goes)">
-      <!--<label for="search">Search</label>-->
-      <input type="submit" value="Search">
-    </p>
-  </form>
+    <form class="search">
+      <p>
+        <label for="search">Query:</label>
+        <input type="search" id="search" name="search" placeholder="title, author, ISBN (anything goes)">
+        <input type="submit" value="Search" id="search">
+      </p>
+    </form>
+  </header>
 
-  <article class="left">
+  <article class="main">
     <h1>Books I read</h1>
 
     <article class="book">
@@ -40,6 +42,17 @@
       </header>
       <p class="meh">Meh</p>
       <p class="comment"><q>Incredible stories and very good advice, but the author's writing is a little too pushy for me.</q></p>
+    </article>
+
+    <article class="book">
+      <p class="no-img">no cover</p>
+      <header>
+        <h1>South Of The Border, West Of The Sun</h1>
+        <p class="authors">
+          <span>Haruki Murakami</span>
+        </p>
+      </header>
+      <p class="dislike">Disliked</p>
     </article>
 
     <article class="book">
@@ -69,10 +82,9 @@
       <p class="dislike">Disliked</p>
       <p class="comment"><q>It's about this shallow and whiny man who wronged every women he put his hand on (probably because he is so deep, no one can understand him since he's the only child, yes, you gotta remember how painful it is for this Hajime guy to be the only child)... except his childhood sweetheart who is so deep that she never has a real personality but some random emo appeal which cannot make me care less. The author tried so hard but she turned out to be a sphinx without a secret. Meanwhile our hero remains an emo for the rest of the book, and maybe the rest of his life. He's got everything he wants but he cannot stop complaining and fancying about that girl whom he had a crush on, yet never actually knows. Did I mention she's the only child also?</q></p>
     </article>
-
   </article>
 
-  <div class="right">
+  <div class="related">
     <p><a href="">12 books to read</a></p>
 
     <aside>
@@ -80,17 +92,12 @@
 
       <article class="book">
         <%= image_tag "slut_thumb_small.jpg" %>
-        <header>
-          <hgroup>
-            <h1>Getting Real</h1>
-            <h2>The Smarter, Faster, Easier Way to Build a Successful Web Application</h2>
-          </hgroup>
-          <p class="authors">
-            <span>Jason Fried</span>,
-            <span>Heinemeier David Hansson</span>,
-            <span>Matthew Linderman</span>
-          </p>
-        </header>
+        <h1>Getting Real</h1> <!-- no subheading when aside -->
+        <p class="authors">
+          <span>Jason Fried</span>,
+          <span>Heinemeier David Hansson</span>,
+          <span>Matthew Linderman</span>
+        </p>
 
         <form><p><input type="submit" value="Like" name="opinion"></p></form>
         <form><p><input type="submit" value="Meh" name="opinion"></p></form>
@@ -99,12 +106,10 @@
 
       <article class="book">
         <p class="no-img">no cover</p>
-        <header>
-          <h1>Getting Real</h1>
-          <p class="authors">
-            <span>Jason Fried</span>
-          </p>
-        </header>
+        <h1>Getting Real</h1>
+        <p class="authors">
+          <span>Jason Fried</span>
+        </p>
 
         <form><p><input type="submit" value="Like" name="opinion"></p></form>
         <form><p><input type="submit" value="Meh" name="opinion"></p></form>
