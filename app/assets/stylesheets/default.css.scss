@@ -25,7 +25,7 @@ body {
   font:12px/1.5 "lucida grande", "helvetica neue", helvetica, arial, sans-serif;
   color: $text-color;
   background:$background-color;
-  background:url('/assets/754.png') repeat-y center;
+/*  background:url('/assets/754.png') repeat-y center;*/
 }
 
 /* lists */
@@ -42,6 +42,7 @@ body > h1 {
   font-size:18px;
   margin-bottom:20px;
 }
+aside > h1 { margin:20px 0;}
 .main .book h1, aside > h1 {
   font-size:16px;
 }
@@ -96,10 +97,18 @@ body > header {
 .main .book { margin-bottom:30px; overflow:hidden; }
 .comment { padding-top:$gap-width; }
 
-.related .book { margin-bottom:$gap-width; }
-
 /* related */
 .related {
-  width: $column-width * 5;
-  margin-left: ($column-width + $gap-width) * 7;
+  width: 5 * $column-width + 4 * $gap-width;
+  margin-left: 7 * ($column-width + $gap-width);
 }
+.related .book {
+  margin-bottom:$gap-width;
+}
+.brief { min-height: $cover-small-h + 16px; }
+
+.opinion form {
+  float:left; width:$column-width; margin-right: $gap-width;
+}
+.opinion input { width:$column-width; }
+.remove { margin-left: 4 * $column-width + 3 * $gap-width; }
