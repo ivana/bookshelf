@@ -9,8 +9,10 @@ $wide-wing-width: $column-width * 8 + $gap-width * 7;
 $narrow-wing-width: $column-width * 4 + $gap-width * 3;
 
 /* colours */
-$background-color: snow;
+$background-color: #fdfcfd;
 $text-color: #333;
+$red: #DC143C; /* crimson */
+$green: #228B22; /* forestgreen */
 
 /* reset */
 * {
@@ -27,7 +29,21 @@ body {
   background:$background-color;
 /*  background:url('/assets/754.png') repeat-y center;*/
 }
-body > header, .book { background:#eee; }
+body > header, .book {
+  background: darken($background-color, 2%);
+  border:1px solid #eee;
+}
+
+/* links */
+/*a { text-decoration:none;
+  &:hover { text-decoration:underline; };
+}*/
+.remove a {
+  color:lighten($red, 35%);
+  text-decoration:none;
+
+  &:hover { color:$red }
+}
 
 /* lists */
 .no-style-type {
@@ -47,10 +63,10 @@ aside > h1 { margin:20px 0;}
 .main .book h1, aside > h1 {
   font-size:16px;
 }
-.related .book h1 {
+.related .book h1, .main .authors {
   font-size:14px;
 }
-.main .book h2, .authors {
+.main .book h2, aside .authors {
   font-size:13px;
 }
 
@@ -63,15 +79,18 @@ $cover-small-h: $cover-small-w * 3/2;
 .book img, .no-img {
   width: $cover-w;
   border:1px solid #ccc;
-  float:left; margin-right:$gap-width;
+  float:left; margin:5px $gap-width 0 0;
 
-  aside & { width: $cover-small-w; }
+  aside & {
+    width: $cover-small-w;
+    margin-top:4px;
+  }
 }
 .no-img {
   height: $cover-h; line-height: $cover-h;
-  background:#eee; color:#aaa;
+  background: $background-color; color:#aaa;
   text-align:center; font-size:10px; font-style:italic;
-  @include text-shadow(#E8E8E8 1px 1px 1px);
+  @include text-shadow(#f2f2f2 1px 1px 1px);
 
   aside & { height: $cover-small-h; line-height: $cover-small-h; }
 }
@@ -91,28 +110,45 @@ body > header {
 .main {
   width: $column-width * 6 + $gap-width * 8;
   float:left;
+
+  .book, .remove, .opinion { clear:left; }
+  .remove { float:right; }
+  .remove, .opinion { padding-top: $gap-width; }
+  .opinion {
+    dt { margin-bottom:10px; }
+    dt, span { font-weight:bold; }
+  }
 }
 
 /* books */
 .book {
   margin-bottom: 2 * $gap-width;
-  padding:$gap-width;
-}
-.comment, .main .book { clear:left; }
+  padding:($gap-width - 5px) $gap-width $gap-width;
 
-.main .book { overflow:hidden; }
-.comment { padding-top:$gap-width; }
+  .main & { overflow:hidden; }
+}
+
+.authors { margin-top:7px;
+  aside & { margin-top:4px; }
+}
+
+.like { color:$green; }
+.dislike { color:$red; }
 
 /* related */
 .related {
   width: 5 * $column-width + 6 * $gap-width;
   margin-left: 7 * ($column-width + $gap-width);
+
+  nav { padding-top:7px; margin-bottom: 23px;
+    a { margin-right:5px; }
+  }
+
+  .remove { margin-left: 4 * $column-width + 3 * $gap-width; }
 }
-.related .book {}
-.brief { min-height: $cover-small-h + 16px; }
+.brief { min-height: $cover-small-h + $gap-width + 2px; }
 
 .opinion form {
   float:left; width:$column-width; margin-right: $gap-width;
 }
 .opinion input { width:$column-width; }
-.remove { margin-left: 4 * $column-width + 3 * $gap-width; }
