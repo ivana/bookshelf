@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Books I Read | Bookshelf</title>
+  <title>Bookshelf | Recently read</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -27,7 +27,7 @@
   </header>
 
   <article class="main">
-    <h1>Books I read</h1>
+    <h1>Recently read</h1>
 
     <article class="book">
       <%= image_tag "slut_thumb.jpg" %>
@@ -85,7 +85,10 @@
   </article>
 
   <div class="related">
-    <p><a href="">12 books to read</a></p>
+    <nav>
+      <a href="">30 books read</a>
+      <a href="">12 to read</a>
+    </nav>
 
     <aside>
       <h1>Currently reading</h1>
