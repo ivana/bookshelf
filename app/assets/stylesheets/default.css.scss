@@ -11,8 +11,17 @@ $narrow-wing-width: $column-width * 4 + $gap-width * 3;
 /* colours */
 $background-color: #fdfcfd;
 $text-color: #333;
-$red: #DC143C; /* crimson */
-$green: #228B22; /* forestgreen */
+$red: darken(#DC143C, 5%); /* crimson based */
+$red_faded: lighten($red, 35%);
+$green: darken(#3CB371, 5%); /* mediumseagreen based */
+$green_faded: lighten($green, 24%);
+
+/* defaults */
+$default-border-radius: 3px;
+$default-text-shadow-color: #f2f2f2;
+$default-text-shadow-h-offset: 0;
+$default-text-shadow-v-offset: 1px;
+$default-text-shadow-blur: 1px;
 
 /* reset */
 * {
@@ -31,7 +40,7 @@ body {
 }
 body > header, .book {
   background: darken($background-color, 2%);
-  border:1px solid #eee;
+  border:1px solid #eaeaea; @include border-radius;
 }
 
 /* links */
@@ -39,7 +48,7 @@ body > header, .book {
   &:hover { text-decoration:underline; };
 }*/
 .remove a {
-  color:lighten($red, 35%);
+  color:$red_faded;
   text-decoration:none;
 
   &:hover { color:$red }
@@ -78,7 +87,7 @@ $cover-small-h: $cover-small-w * 3/2;
 
 .book img, .no-img {
   width: $cover-w;
-  border:1px solid #ccc;
+  border:1px solid #ddd;
   float:left; margin:5px $gap-width 0 0;
 
   aside & {
@@ -90,7 +99,7 @@ $cover-small-h: $cover-small-w * 3/2;
   height: $cover-h; line-height: $cover-h;
   background: $background-color; color:#aaa;
   text-align:center; font-size:10px; font-style:italic;
-  @include text-shadow(#f2f2f2 1px 1px 1px);
+  @include text-shadow;
 
   aside & { height: $cover-small-h; line-height: $cover-small-h; }
 }
@@ -120,21 +129,6 @@ body > header {
   }
 }
 
-/* books */
-.book {
-  margin-bottom: 2 * $gap-width;
-  padding:($gap-width - 5px) $gap-width $gap-width;
-
-  .main & { overflow:hidden; }
-}
-
-.authors { margin-top:7px;
-  aside & { margin-top:4px; }
-}
-
-.like { color:$green; }
-.dislike { color:$red; }
-
 /* related */
 .related {
   width: 5 * $column-width + 6 * $gap-width;
@@ -146,9 +140,42 @@ body > header {
 
   .remove { margin-left: 4 * $column-width + 3 * $gap-width; }
 }
+
+/* books */
+.book {
+  margin-bottom: 2 * $gap-width;
+  padding:($gap-width - 5px) $gap-width $gap-width;
+
+  .main & { overflow:hidden; }
+}
+.authors { margin-top:7px;
+  aside & { margin-top:4px; }
+}
 .brief { min-height: $cover-small-h + $gap-width + 2px; }
 
 .opinion form {
   float:left; width:$column-width; margin-right: $gap-width;
 }
-.opinion input { width:$column-width; }
+.opinion input {
+  @include box-sizing(content-box);
+  width:$column-width; height:18px;
+  border: 1px solid #eaeaea; @include border-radius;
+  background: #FDFCFD;
+  @include background-image(linear-gradient(white, #f4f4f4 80%, #f0f0f0));
+
+  &:hover {
+    border-color:#ddd;
+    @include background-image(linear-gradient(white, #FDFCFD 55%, #ececec));
+    @include text-shadow;
+    @include box-shadow(#EAEAEA 1px 0 1px);
+  }
+  &:active { position:relative; top:1px; }
+}
+
+.like, .like input:hover { color:$green; }
+.dislike, .dislike input:hover { color:$red; }
+.like input { color:$green_faded; }
+.dislike input { color:$red_faded; }
+.meh input { color:#aaa;
+  &:hover { color:#555; }
+}
