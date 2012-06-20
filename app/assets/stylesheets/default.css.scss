@@ -10,7 +10,7 @@ $narrow-wing-width: $column-width * 4 + $gap-width * 3;
 
 /* colours */
 $background-color: #fdfcfd;
-$text-color: #333;
+$text-color: #444;
 $red: darken(#DC143C, 5%); /* crimson based */
 $red_faded: lighten($red, 35%);
 $green: darken(#3CB371, 5%); /* mediumseagreen based */
@@ -18,6 +18,7 @@ $green_faded: lighten($green, 24%);
 
 /* defaults */
 $default-border-radius: 3px;
+
 $default-text-shadow-color: #f2f2f2;
 $default-text-shadow-h-offset: 0;
 $default-text-shadow-v-offset: 1px;
@@ -39,19 +40,17 @@ body {
 /*  background:url('/assets/754.png') repeat-y center;*/
 }
 body > header, .book {
-  background: darken($background-color, 2%);
   border:1px solid #eaeaea; @include border-radius;
+  background: darken($background-color, 1%);
+  @include background-image(linear-gradient(darken($background-color, 1%), darken($background-color, 2%)))
 }
 
 /* links */
-/*a { text-decoration:none;
+a { text-decoration:none;
   &:hover { text-decoration:underline; };
-}*/
-.remove a {
-  color:$red_faded;
-  text-decoration:none;
-
-  &:hover { color:$red }
+}
+.remove a { color:$red_faded;
+  &:hover { color:$red; text-decoration:none; }
 }
 
 /* lists */
@@ -61,12 +60,17 @@ body > header, .book {
 
 /* headings */
 h1, h2 { font-weight:normal; }
-body > h1 {
-  font-size:24px;
+h1 {
+  @include text-shadow(rgba(30, 27, 32, 0.1) 1px 1px 2px);
+}
+body > header h1 {
+  font-size:26px;
+  font-variant: small-caps; text-transform: lowercase; letter-spacing: 1px;
+  float:left;
 }
 .main > h1 {
   font-size:18px;
-  margin-bottom: 2 * $gap-width;
+  margin: 0 0 (2 * $gap-width) $gap-width;
 }
 aside > h1 { margin:20px 0;}
 .main .book h1, aside > h1 {
@@ -76,7 +80,7 @@ aside > h1 { margin:20px 0;}
   font-size:14px;
 }
 .main .book h2, aside .authors {
-  font-size:13px;
+  font-size:13px; margin-top: 3px;
 }
 
 /* images */
@@ -89,6 +93,7 @@ $cover-small-h: $cover-small-w * 3/2;
   width: $cover-w;
   border:1px solid #ddd;
   float:left; margin:5px $gap-width 0 0;
+  @include box-shadow(#F2F2F2 1px 0 2px);
 
   aside & {
     width: $cover-small-w;
@@ -107,12 +112,13 @@ $cover-small-h: $cover-small-w * 3/2;
 /* site header */
 body > header {
   margin-bottom: $gap-width;
-  padding:0 $gap-width;
-}
+  padding:0 $gap-width $gap-width;
 
-/* search form */
-.search {
-  label { display:none; }
+  nav { clear: left; text-align: right; margin-top:$gap-width;
+    a { border-left: 1px solid #ddd; padding-left: 12px; margin-left: 10px;
+      &:first-child { border-left-width:0; }
+    }
+  }
 }
 
 /* main content */
@@ -134,11 +140,11 @@ body > header {
   width: 5 * $column-width + 6 * $gap-width;
   margin-left: 7 * ($column-width + $gap-width);
 
-  nav { padding-top:7px; margin-bottom: 23px;
-    a { margin-right:5px; }
+  nav { padding-top:7px; margin:0 $gap-width 23px 0; text-align:right;
+    a { margin-left:5px; }
   }
 
-  .remove { margin-left: 4 * $column-width + 3 * $gap-width; }
+  .remove { margin-left: 4 * $column-width + 3 * $gap-width; text-align:right; }
 }
 
 /* books */
@@ -148,28 +154,39 @@ body > header {
 
   .main & { overflow:hidden; }
 }
-.authors { margin-top:7px;
-  aside & { margin-top:4px; }
-}
+.main .authors { margin-top:7px; }
 .brief { min-height: $cover-small-h + $gap-width + 2px; }
 
+/* forms */
+.search { text-align:right; margin-top: 14px;
+  label { display:none; }
+
+  input[type="search"] {
+    width: 3 * ($column-width + $gap-width);
+    margin-right:6px;
+  }
+  input[type="submit"] {
+    color:#555;
+  }
+}
 .opinion form {
   float:left; width:$column-width; margin-right: $gap-width;
 }
 .opinion input {
+  border: 1px solid #ddd; 
+
+  &:active { position:relative; top:1px; }
+}
+.opinion input, .search input[type="submit"] {
   @include box-sizing(content-box);
   width:$column-width; height:18px;
-  border: 1px solid #eaeaea; @include border-radius;
-  background: #FDFCFD;
-  @include background-image(linear-gradient(white, #f4f4f4 80%, #f0f0f0));
-
-  &:hover {
-    border-color:#ddd;
-    @include background-image(linear-gradient(white, #FDFCFD 55%, #ececec));
-    @include text-shadow;
-    @include box-shadow(#EAEAEA 1px 0 1px);
-  }
-  &:active { position:relative; top:1px; }
+  @include border-radius;
+  @include background-image(linear-gradient(white, #FDFCFD 55%, #ececec));
+}
+.opinion input:hover, .search input[type="submit"] {
+  border:1px solid #ccc;
+  @include text-shadow;
+  @include box-shadow(#EAEAEA 1px 0 1px);
 }
 
 .like, .like input:hover { color:$green; }
