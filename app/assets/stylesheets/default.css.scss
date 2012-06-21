@@ -65,9 +65,9 @@ h1 {
   @include text-shadow(rgba(30, 27, 32, 0.1) 1px 1px 2px);
 }
 body > header h1 {
-  font-size:26px;
-  font-variant: small-caps; text-transform: lowercase; letter-spacing: 1px;
+  font-size:18px; text-transform:uppercase; letter-spacing: 1px;
   float:left;
+  margin-top:10px;
 }
 .main > h1 {
   font-size:18px;
@@ -165,6 +165,8 @@ body > header {
   input[type="search"] {
     width: 3 * ($column-width + $gap-width);
     margin-right:6px;
+    /* simulate Webkit search input styles: */
+    border:1px solid #ccc; border-top-color:#888; border-left-color:#888; @include border-radius(10px); height:16px; padding:2px 10px 0;
   }
   input[type="submit"] {
     color:#555;
