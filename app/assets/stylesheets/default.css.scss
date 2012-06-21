@@ -9,8 +9,9 @@ $wide-wing-width: $column-width * 8 + $gap-width * 7;
 $narrow-wing-width: $column-width * 4 + $gap-width * 3;
 
 /* colours */
-$background-color: #fdfcfd;
+$background-color: #fcfbfc;
 $text-color: #444;
+$link_color: #C71585; /* mediumVioletRed */
 $red: darken(#DC143C, 5%); /* crimson based */
 $red_faded: lighten($red, 35%);
 $green: darken(#3CB371, 5%); /* mediumseagreen based */
@@ -46,7 +47,7 @@ body > header, .book {
 }
 
 /* links */
-a { text-decoration:none;
+a { text-decoration:none; color:$link-color;
   &:hover { text-decoration:underline; };
 }
 .remove a { color:$red_faded;
@@ -167,6 +168,7 @@ body > header {
   }
   input[type="submit"] {
     color:#555;
+    position: relative; bottom: 1px;
   }
 }
 .opinion form {
