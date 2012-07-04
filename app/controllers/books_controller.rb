@@ -10,8 +10,4 @@ class BooksController < ApplicationController
     end
   end
 
-  def search
-    # take params, make request to google
-    # render results
-  end
 end
