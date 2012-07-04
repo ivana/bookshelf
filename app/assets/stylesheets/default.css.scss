@@ -11,11 +11,13 @@ $narrow-wing-width: $column-width * 4 + $gap-width * 3;
 /* colours */
 $background-color: #fcfbfc;
 $text-color: #444;
-$link_color: #C71585; /* mediumVioletRed */
+$link-color: #C71585; /* mediumVioletRed */
 $red: darken(#DC143C, 5%); /* crimson based */
-$red_faded: lighten($red, 35%);
+$red-faded: lighten($red, 35%);
 $green: darken(#3CB371, 5%); /* mediumseagreen based */
-$green_faded: lighten($green, 24%);
+$green-faded: lighten($green, 24%);
+$blue: #4682B4; /* steelblue */
+$blue-faded: lighten($blue, 15%);
 
 /* defaults */
 $default-border-radius: 3px;
@@ -50,7 +52,10 @@ body > header, .book {
 a { text-decoration:none; color:$link-color;
   &:hover { text-decoration:underline; };
 }
-.remove a { color:$red_faded;
+h1 a { color:inherit;
+  &:hover { text-decoration:none; }
+}
+.remove a { color:$red-faded;
   &:hover { color:$red; text-decoration:none; }
 }
 
@@ -69,18 +74,18 @@ body > header h1 {
   float:left;
   margin-top:10px;
 }
-.main > h1 {
+.main > h1, .results > h1 {
   font-size:18px;
   margin: 0 0 (2 * $gap-width) $gap-width;
 }
 aside > h1 { margin:20px 0;}
-.main .book h1, aside > h1 {
+.main .book h1, aside > h1, .results h1 {
   font-size:16px;
 }
 .related .book h1, .main .authors {
   font-size:14px;
 }
-.main .book h2, aside .authors {
+.main .book h2, aside .authors, .results h2, .results .authors {
   font-size:13px; margin-top: 3px;
 }
 
@@ -91,12 +96,13 @@ $cover-small-w: $column-width;
 $cover-small-h: $cover-small-w * 3/2;
 
 .book img, .no-img {
+  @include box-sizing(border-box);
   width: $cover-w;
   border:1px solid #ddd;
   float:left; margin:5px $gap-width 0 0;
   @include box-shadow(#F2F2F2 1px 0 2px);
 
-  aside & {
+  aside &, .results & {
     width: $cover-small-w;
     margin-top:4px;
   }
@@ -107,7 +113,7 @@ $cover-small-h: $cover-small-w * 3/2;
   text-align:center; font-size:10px; font-style:italic;
   @include text-shadow;
 
-  aside & { height: $cover-small-h; line-height: $cover-small-h; }
+  aside &, .results & { height: $cover-small-h; line-height: $cover-small-h; }
 }
 
 /* site header */
@@ -158,6 +164,20 @@ body > header {
 .main .authors { margin-top:7px; }
 .brief { min-height: $cover-small-h + $gap-width + 2px; }
 
+/* search results */
+.results {
+  > article { clear:left; }
+  .book {
+    min-height: $cover-small-h + 2px;
+    width: $column-width * 6 + $gap-width * 6;
+    float:left;
+  }
+  .actions { margin-left:$column-width * 7 + $gap-width * 7; }
+  .opinion { margin-top:20px;
+    > p { margin-bottom:6px; color:#ccc; }
+  }
+}
+
 /* forms */
 .search { text-align:right; margin-top: 14px;
   label { display:none; }
@@ -174,20 +194,22 @@ body > header {
   }
 }
 .opinion form {
-  float:left; width:$column-width; margin-right: $gap-width;
+  float:left; margin-right: $gap-width;
 }
-.opinion input {
-  border: 1px solid #ddd; 
-
+.opinion input, .toread input { border: 1px solid #ddd;
   &:active { position:relative; top:1px; }
 }
-.opinion input, .search input[type="submit"] {
-  @include box-sizing(content-box);
-  width:$column-width; height:18px;
+.opinion input, .search input[type="submit"] { width:$column-width; }
+.opinion input, .toread input, .search input[type="submit"] {
+  height:18px;
   @include border-radius;
   @include background-image(linear-gradient(white, #FDFCFD 55%, #ececec));
 }
-.opinion input:hover, .search input[type="submit"] {
+.toread input { width: $column-width + $gap-width; color:$blue-faded;
+  &:hover { color:$blue; }
+}
+
+.opinion input:hover, .toread input:hover, .search input[type="submit"] {
   border:1px solid #ccc;
   @include text-shadow;
   @include box-shadow(#EAEAEA 1px 0 1px);
@@ -195,8 +217,8 @@ body > header {
 
 .like, .like input:hover { color:$green; }
 .dislike, .dislike input:hover { color:$red; }
-.like input { color:$green_faded; }
-.dislike input { color:$red_faded; }
+.like input { color:$green-faded; }
+.dislike input { color:$red-faded; }
 .meh input { color:#aaa;
   &:hover { color:#555; }
 }
