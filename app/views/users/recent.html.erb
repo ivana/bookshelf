@@ -1,0 +1,99 @@
+<article class="main">
+  <h1>Recently read</h1>
+
+  <article class="book">
+    <%= image_tag "slut_thumb.jpg" %>
+    <header>
+      <hgroup>
+        <h1>Ethical Slut</h1>
+        <h2>A Practical Guide to Polyamory, Open Relationships &amp; Other Adventures</h2>
+      </hgroup>
+      <p class="authors">
+        <span>Dossie Easton</span>,
+        <span>Janet W. Hardy</span>
+      </p>
+    </header>
+    <p class="remove"><a href="">remove from read</a></p>
+    <dl class="opinion">
+      <dt class="like">Liked it</dt>
+      <dd><q>This book has helped me more than countless hours of therapy and self inflicted misery. I wish I had read this sooner, it would have saved me a lot of time, money and sorrow.</q></dd>
+    </dl>
+  </article>
+
+  <article class="book">
+    <%= image_tag "slut_thumb.jpg" %>
+    <header>
+      <hgroup>
+        <h1>The 4-Hour Work Week</h1>
+        <h2>Escape the 9-5, Live Anywhere and Join the New Rich</h2>
+      </hgroup>
+      <p class="authors">
+        <span>Timothy Ferriss</span>
+      </p>
+    </header>
+    <p class="remove"><a href="">remove from read</a></p>
+    <dl class="opinion">
+      <dt class="meh">Nothing special</dt>
+      <dd><q>Incredible stories and very good advice, but the author's writing is a little too pushy for me.</q></dd>
+    </dl>
+  </article>
+
+  <article class="book">
+    <p class="no-img">no cover</p>
+    <header>
+      <h1>South Of The Border, West Of The Sun</h1>
+      <p class="authors">
+        <span>Haruki Murakami</span>
+      </p>
+    </header>
+    <p class="remove"><a href="">remove from read</a></p>
+    <p class="opinion"><span class="dislike">Didn't like it</span></p>
+  </article>
+</article>
+
+<div class="related">
+  <nav>
+    <a href="">30 books read</a>,
+    <a href="">12 to read</a>
+  </nav>
+
+  <aside>
+    <h1>Currently reading</h1>
+
+    <article class="book">
+      <%= image_tag "slut_thumb_small.jpg" %>
+      <div class="brief">
+        <h1>Getting Real</h1> <!-- no subheading when aside -->
+        <p class="authors">
+          <span>Jason Fried</span>,
+          <span>Heinemeier David Hansson</span>,
+          <span>Matthew Linderman</span>
+        </p>
+      </div>
+
+      <div class="opinion">
+        <form class="like"><p><input type="submit" value="Good" name="opinion"></p></form>
+        <form class="meh"><p><input type="submit" value="Meh" name="opinion"></p></form>
+        <form class="dislike"><p><input type="submit" value="Poor" name="opinion"></p></form>
+      </div>
+      <p class="remove"><a href="">give up</a></p>
+    </article>
+
+    <article class="book">
+      <p class="no-img">no cover</p>
+      <div class="brief">
+        <h1>Getting Real</h1>
+        <p class="authors">
+          <span>Jason Fried</span>
+        </p>
+      </div>
+
+      <div class="opinion">
+        <form class="like"><p><input type="submit" value="Good" name="opinion"></p></form>
+        <form class="meh"><p><input type="submit" value="Meh" name="opinion"></p></form>
+        <form class="dislike"><p><input type="submit" value="Poor" name="opinion"></p></form>
+      </div>
+      <p class="remove"><a href="">give up</a></p>
+    </article>
+  </aside>
+</div>
