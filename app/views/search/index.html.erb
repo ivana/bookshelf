@@ -1,0 +1,58 @@
+<article class="results">
+  <h1>Search results for <i><%= params[:q] %></i> :</h1>
+
+  <% @books.each do |b| %>
+    <article>
+      <div class="book">
+        <% if b.coverLinkSmall.nil? %>
+          <p class="no-img">no cover</p>
+        <% else %>
+          <%= image_tag b.coverLinkSmall %>
+        <% end %>
+
+        <h1><%= b.title %></h1>
+
+        <p class="authors">
+          <% if b.authors.respond_to? :join %>
+            <%= b.authors.join ', ' %>
+          <% else %>
+            <%= b.authors %>
+          <% end %>
+        </p>
+      </div>
+
+      <div class="actions">
+        <form class="toread"><p><input type="submit" value="To read"></p></form>
+
+        <div class="opinion">
+          <p>I already read it. It's:</p>
+          <form class="like"><p><input type="submit" value="Good" name="opinion"></p></form>
+          <form class="meh"><p><input type="submit" value="Meh" name="opinion"></p></form>
+          <form class="dislike"><p><input type="submit" value="Poor" name="opinion"></p></form>
+        </div>
+      </div>
+    </article>
+  <% end %>
+
+<!--   <article>
+    <div class="book">
+      <p class="no-img">no cover</p>
+      <h1>Getting Real</h1>
+      <p class="authors">
+        <span>Jason Fried</span>
+      </p>
+    </div>
+
+    <div class="actions">
+      <form class="toread"><p><input type="submit" value="To read"></p></form>
+
+      <div class="opinion">
+        <p>I already read it. It's:</p>
+        <form class="like"><p><input type="submit" value="Good" name="opinion"></p></form>
+        <form class="meh"><p><input type="submit" value="Meh" name="opinion"></p></form>
+        <form class="dislike"><p><input type="submit" value="Poor" name="opinion"></p></form>
+      </div>
+    </div>
+  </article>
+ -->
+</article>

@@ -1,7 +1,7 @@
 Bookshelf::Application.routes.draw do
 
   resources :books
-  match 'search/results'
+  match 'search' => 'search#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

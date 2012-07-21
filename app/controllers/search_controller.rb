@@ -1,11 +1,13 @@
 class SearchController < ApplicationController
 
-  def search
-    # take params, make request to google
-    # render results
-  end
+  def index
+    @books = GoogleBook.search params[:q]
 
-  def results
+    respond_to do |format|
+      format.html # index.html.erb
+      # format.json { render json: @books }
+    end
+
   end
 
 end
