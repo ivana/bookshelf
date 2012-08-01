@@ -73,19 +73,19 @@ body > header h1 {
   float:left;
   margin-top:10px;
 }
-.main > h1, .results > h1 {
+body > article > h1 {
   font-size:18px;
   margin: 0 0 (2 * $gap-width) $gap-width;
 }
 aside > h1 { margin:20px 0;}
-.main .book h1, aside > h1, .results h1 {
+.book h1, aside > h1 {
   font-size:16px;
 }
-.related .book h1, .main .authors {
-  font-size:14px;
-}
-.main .book h2, aside .authors, .results h2, .results .authors {
+.main .book h2, .authors {
   font-size:13px; margin-top: 3px;
+}
+aside .book h1, .main .authors {
+  font-size:14px;
 }
 
 /* images */
@@ -96,10 +96,11 @@ $cover-small-h: $cover-small-w * 3/2;
 
 .book img, .no-img {
   @include box-sizing(border-box);
-  width: $cover-w;
-  border:1px solid #ddd;
-  float:left; margin:5px $gap-width 0 0;
   @include box-shadow(#F2F2F2 1px 0 2px);
+  border:1px solid #ddd;
+  float:left;
+  width: $cover-w;
+  margin:5px $gap-width $gap-width 0;
 
   aside &, .results & {
     width: $cover-small-w;
@@ -127,14 +128,22 @@ body > header {
   }
 }
 
+/* books */
+.book {
+  margin-bottom: 2 * $gap-width;
+  padding:($gap-width - 5px) $gap-width $gap-width;
+  overflow:hidden;
+}
+.main .authors { margin-top:7px; }
+.opinion { clear:left; }
+.remove, .toread { float:right; }
+
 /* main content */
 .main {
   width: $column-width * 6 + $gap-width * 8;
   float:left;
 
-  .book, .remove, .opinion { clear:left; }
-  .remove { float:right; }
-  .remove, .opinion { padding-top: $gap-width; }
+  .book, .remove { clear:left; }
   .opinion {
     dt { margin-bottom:10px; }
     dt, span { font-weight:bold; }
@@ -149,31 +158,14 @@ body > header {
   nav { padding-top:7px; margin:0 $gap-width 23px 0; text-align:right;
     a { margin-left:5px; }
   }
-
-  .remove { margin-left: 4 * $column-width + 3 * $gap-width; text-align:right; }
 }
-
-/* books */
-.book {
-  margin-bottom: 2 * $gap-width;
-  padding:($gap-width - 5px) $gap-width $gap-width;
-
-  .main & { overflow:hidden; }
-}
-.main .authors { margin-top:7px; }
-.brief { min-height: $cover-small-h + $gap-width + 2px; }
 
 /* search results */
 .results {
   > article { clear:left; }
   .book {
-    min-height: $cover-small-h + 2px;
     width: $column-width * 6 + $gap-width * 6;
     float:left;
-  }
-  .actions { margin-left:$column-width * 7 + $gap-width * 7; }
-  .opinion { margin-top:20px;
-    > p { margin-bottom:6px; color:#ccc; }
   }
 }
 

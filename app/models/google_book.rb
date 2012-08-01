@@ -14,7 +14,7 @@ class GoogleBook < NibblerJSON
   def self.search(query)
     search_params = {
       key: Rails.application.config.google.api_key,
-      maxResults: 10,
+      maxResults: 5,
       fields: 'items(id,volumeInfo(authors,canonicalVolumeLink,imageLinks(smallThumbnail,thumbnail),subtitle,title))',
       q: query
     }
