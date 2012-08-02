@@ -7,6 +7,7 @@ class GoogleBook < NibblerJSON
   element '.volumeInfo.title' => :title
   element '.volumeInfo.subtitle' => :subtitle
   elements '.volumeInfo.authors' => :authors
+  element '.volumeInfo.description' => :description
   element '.volumeInfo.imageLinks.thumbnail' => :coverLink
   element '.volumeInfo.imageLinks.smallThumbnail' => :coverLinkSmall
   element '.volumeInfo.canonicalVolumeLink' => :gBooksLink
@@ -15,7 +16,7 @@ class GoogleBook < NibblerJSON
     search_params = {
       key: Rails.application.config.google.api_key,
       maxResults: 5,
-      fields: 'items(id,volumeInfo(authors,canonicalVolumeLink,imageLinks(smallThumbnail,thumbnail),subtitle,title))',
+      fields: 'items(id,volumeInfo(authors,description,canonicalVolumeLink,imageLinks(smallThumbnail,thumbnail),subtitle,title))',
       q: query
     }
     search_url = "https://www.googleapis.com/books/v1/volumes?#{search_params.to_query}"

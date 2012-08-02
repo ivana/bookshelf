@@ -4,30 +4,48 @@
   <h1>Search results for <i><%= params[:q] %></i> :</h1>
 
   <% @books.each do |b| %>
-    <article class="book">
-      <% if b.coverLinkSmall.nil? %>
-        <p class="no-img">no cover</p>
-      <% else %>
-        <%= image_tag b.coverLinkSmall %>
-      <% end %>
+    <article>
 
-      <header>
-        <h1><%= b.title %></h1>
-        <p class="authors">
-          <% if b.authors.respond_to? :join %>
-            <%= b.authors.join ', ' %>
+      <div class="book main">
+        <% unless b.coverLink.nil? %>
+          <%= image_tag b.coverLink, :alt => b.title %>
+        <% else %>
+          <p class="no-img">no cover</p>
+        <% end %>
+
+        <header>
+          <% unless b.subtitle.nil? %>
+            <hgroup>
+              <h1><%= b.title %></h1>
+              <h2><%= b.subtitle %></h2>
+            </hgroup>
           <% else %>
-            <%= b.authors %>
+            <h1><%= b.title %></h1>
           <% end %>
-        </p>
-      </header>
 
-      <div class="opinion">
-        <form class="like"><p><input type="submit" value="Good" name="opinion"></p></form>
-        <form class="meh"><p><input type="submit" value="Meh" name="opinion"></p></form>
-        <form class="dislike"><p><input type="submit" value="Poor" name="opinion"></p></form>
+          <p class="authors">
+            <% if b.authors.respond_to? :join %>
+              <%= b.authors.join ', ' %>
+            <% else %>
+              <%= b.authors %>
+            <% end %>
+          </p>
+        </header>
+
+        <div class="opinion">
+          <form class="dislike"><p><input type="submit" value="Poor" name="opinion"></p></form>
+          <form class="meh"><p><input type="submit" value="Meh" name="opinion"></p></form>
+          <form class="like"><p><input type="submit" value="Good" name="opinion"></p></form>
+        </div>
+        <form class="toread"><p><input type="submit" value="To read"></p></form>
       </div>
-      <form class="toread"><p><input type="submit" value="To read"></p></form>
+
+      <div class="related">
+        <% unless b.description.nil? %>
+          <p class="desc"><%= b.description %></p>
+        <% end %>
+        <p><%= link_to "See on Google Books", b.gBooksLink, :target => '_blank' %></p>
+      </div>
 
     </article>
   <% end %>

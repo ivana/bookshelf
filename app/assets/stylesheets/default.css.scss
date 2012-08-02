@@ -44,7 +44,7 @@ body {
   font:12px/1.5 "lucida grande", "helvetica neue", helvetica, arial, sans-serif;
   color: $text-color;
   background:$background-color;
-/*  background:url('/assets/754.png') repeat-y center;*/
+  // background:url('/assets/754.png') repeat-y center;
 }
 body > header, .book {
   border:1px solid #eaeaea; @include border-radius;
@@ -81,13 +81,14 @@ body > article > h1 {
   margin: 0 0 (2 * $gap-width) $gap-width;
 }
 aside > h1 { margin:20px 0;}
+
 .book h1, aside > h1 {
   font-size:16px;
 }
-.main .book h2, .authors {
+.book h2, aside .authors {
   font-size:13px; margin-top: 3px;
 }
-aside .book h1, .main .authors {
+aside .book h1, .authors {
   font-size:14px;
 }
 
@@ -105,7 +106,7 @@ $cover-small-h: $cover-small-w * 3/2;
   width: $cover-w;
   margin:5px $gap-width $gap-width 0;
 
-  aside &, .results & {
+  aside & {
     width: $cover-small-w;
     margin-top:4px;
   }
@@ -116,7 +117,7 @@ $cover-small-h: $cover-small-w * 3/2;
   text-align:center; font-size:10px; font-style:italic;
   @include text-shadow;
 
-  aside &, .results & { height: $cover-small-h; line-height: $cover-small-h; }
+  aside & { height: $cover-small-h; line-height: $cover-small-h; }
 }
 
 /* site header */
@@ -124,7 +125,7 @@ body > header {
   margin-bottom: $gap-width;
   padding:0 $gap-width $gap-width;
 
-  nav { clear: left; text-align: right; margin-top:$gap-width;
+  nav { text-align: right; margin-top:$gap-width;
     a { border-left: 1px solid #ddd; padding-left: 12px; margin-left: 10px;
       &:first-child { border-left-width:0; }
     }
@@ -133,15 +134,15 @@ body > header {
 
 /* books */
 .book {
+  @include box-sizing(border-box);
   margin-bottom: 2 * $gap-width;
   padding:($gap-width - 5px) $gap-width $gap-width;
   overflow:hidden;
 }
-.main .authors { margin-top:7px; }
-.opinion { clear:left; }
+.authors { margin-top:7px; }
+.opinion, .results > article { clear:left; }
 .remove, .toread { float:right; }
 
-/* main content */
 .main {
   width: $column-width * 6 + $gap-width * 8;
   float:left;
@@ -153,22 +154,13 @@ body > header {
   }
 }
 
-/* related */
 .related {
   width: 5 * $column-width + 6 * $gap-width;
   margin-left: 7 * ($column-width + $gap-width);
 
-}
-
-/* search results */
-.results {
-  > article { clear:left; }
-  .book {
-    width: $column-width * 6 + $gap-width * 6;
-    float:left;
-  }
   nav { padding-top:7px; margin:0 $gap-width 23px 0; text-align:right; color:$link-color; }
 }
+.desc { text-align: justify; padding-right:$gap-width; margin-bottom: 10px; }
 
 /* forms */
 .search { text-align:right; margin-top: 14px;
