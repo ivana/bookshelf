@@ -15,10 +15,13 @@ $green: darken(#3CB371, 5%); /* mediumSeaGreen based */
 $green-faded: lighten($green, 24%);
 $blue: #4682B4; /* steelBlue */
 $blue-faded: lighten($blue, 15%);
+$gray: #555;
+$gray-faded: #aaa;
 
 $background-color: #fcfbfc;
 $text-color: #444;
-$link-color: #F08080; /* lightCoral */
+$link-color: #b4b4bb;
+$link-hover-color: #a0a0a9;
 
 /* defaults */
 $default-border-radius: 3px;
@@ -51,7 +54,7 @@ body > header, .book {
 
 /* links */
 a { text-decoration:none; color:$link-color;
-  &:hover { color:darken($link-color, 10%); }
+  &:hover { color:$link-hover-color; }
 }
 h1 a, h1 a:hover { color:inherit; }
 .remove a { color:$red-faded;
@@ -155,9 +158,6 @@ body > header {
   width: 5 * $column-width + 6 * $gap-width;
   margin-left: 7 * ($column-width + $gap-width);
 
-  nav { padding-top:7px; margin:0 $gap-width 23px 0; text-align:right;
-    a { margin-left:5px; }
-  }
 }
 
 /* search results */
@@ -167,6 +167,7 @@ body > header {
     width: $column-width * 6 + $gap-width * 6;
     float:left;
   }
+  nav { padding-top:7px; margin:0 $gap-width 23px 0; text-align:right; color:$link-color; }
 }
 
 /* forms */
@@ -210,6 +211,6 @@ body > header {
 .dislike, .dislike input:hover { color:$red; }
 .like input { color:$green-faded; }
 .dislike input { color:$red-faded; }
-.meh input { color:#aaa;
-  &:hover { color:#555; }
+.meh input { color:$gray-faded;
+  &:hover { color:$gray; }
 }
