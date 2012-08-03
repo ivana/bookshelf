@@ -42,7 +42,9 @@
 
       <div class="related">
         <% unless b.description.nil? %>
-          <p class="desc"><%= b.description %></p>
+          <p class="desc">
+            <%= (b.description.size > 480) ? (b.description[0, 480].rpartition(" ").first + " ...") : b.description %>
+          </p>
         <% end %>
         <p><%= link_to "See on Google Books", b.gBooksLink, :target => '_blank' %></p>
       </div>
